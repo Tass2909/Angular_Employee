@@ -1,7 +1,14 @@
 <div class="col-md-6 offset-md-3">
     <h3>Update Employee</h3>
+    <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Update done</strong>
+        <div><a href="/employees">Return to the employee list</a></div>
+        <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <form (ngSubmit)="onSubmit()">
-        
+
         <div class="form-group">
             <label for="firstName">
                 First Name
@@ -22,4 +29,4 @@
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
-    </div>
+</div>

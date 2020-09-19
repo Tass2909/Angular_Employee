@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class EmployeeListComponent implements OnInit {
 
   employees: Employee[];
-
+  alert: boolean = false;
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
@@ -27,4 +27,21 @@ export class EmployeeListComponent implements OnInit {
   updateEmployee(id: number) {
     this.router.navigate(['update-employee', id]);
   }
+
+  detailEmployee(id: number) {
+    this.router.navigate(['employee-details', id]);
+  }
+
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe(data => {
+      this.alert = true;
+      this.getEmployees();
+    })
+  }
+
+  closeAlert() {
+    this.alert = false;
+  }
+
+
 }
